@@ -1,0 +1,37 @@
+# Smart CLI-Based Library Management System (LMS)
+
+A command-line based Python application that simulates how a real-world library operates.  
+The system allows administrators to manage books, issue and return them, calculate fines, and store data persistently using files. \This project focuses on **clean logic, modular design, and practical Python fundamentals** rather than external frameworks.
+
+## Features
+
+- Add, update, and remove books
+- Issue and return books with automatic fine calculation
+- Due date tracking with overdue detection
+- CLI-based return reminders for pending and overdue books
+- User management with book issuing limits
+- Search and filter books by title, author, or status
+- View transaction history and reports
+- Persistent storage using CSV or JSON files
+- Robust input validation and error handling
+
+## Concepts & Skills Used
+
+- Functions and modular programming
+- Dictionaries and loops
+- File handling using CSV and JSON
+- Conditional logic
+- Exception handling
+- Clean and readable code structure
+
+## Data Storage
+
+- Book records and transaction data are stored locally
+- Supports **CSV** or **JSON** file formats
+- Ensures data persistence even after program termination
+
+## How to Run the Project
+
+1. Ensure **Python 3** is installed on your system
+2. Clone the repository
+3. Run the application: `python main.py`
