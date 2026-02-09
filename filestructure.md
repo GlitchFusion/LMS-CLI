@@ -1,3 +1,37 @@
+# File Structure
+
+├── main.py
+├── config.py
+│
+├── core/
+│ ├── book_manager.py
+│ ├── user_manager.py
+│ ├── transaction_manager.py
+│ └── reminder.py
+│
+├── storage/
+│ ├── storage_interface.py
+│ ├── file_handler.py
+│ ├── csv_storage.py
+│ ├── json_storage.py
+│ └── db_storage.py
+│
+├── database/
+│ ├── db_connection.py
+│ ├── schema.sql
+│ └── library.db
+│
+├── utils/
+│ ├── validators.py
+│ ├── date_utils.py
+│ └── menu.py
+│
+├── reports/
+│ └── report_generator.py
+│
+├── README.md
+└── requirements.txt
+
 ## Database Components Explained
 
 ### `database/db_connection.py`
