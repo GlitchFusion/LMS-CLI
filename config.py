@@ -1,0 +1,4 @@
+STORAGE_TYPE = "db"
+DATABASE_PATH = "database/library.db"
+FINE_PER_DAY = 10
+MAX_BOOKS_PER_USER = 6
