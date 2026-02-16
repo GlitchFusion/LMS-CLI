@@ -36,14 +36,6 @@ CREATE TABLE issues (
     return_date DATE
 );
 
-CREATE TABLE reservations (
-    reservation_id SERIAL PRIMARY KEY,
-    book_id INTEGER REFERENCES books(book_id) ON DELETE CASCADE,
-    user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-    reservation_date DATE NOT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'active'
-);
-
 CREATE TABLE reviews (
     review_id SERIAL PRIMARY KEY,
     book_id INTEGER REFERENCES books(book_id) ON DELETE CASCADE,
