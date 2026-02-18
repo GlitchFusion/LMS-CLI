@@ -1,4 +1,4 @@
-CREATE TABLE books (
+CREATE TABLE IF NOT EXISTS books (
     book_id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author_id INTEGER REFERENCES authors(author_id) ON DELETE SET NULL,
@@ -9,7 +9,7 @@ CREATE TABLE books (
     genre_id INTEGER REFERENCES genres(genre_id) ON DELETE SET NULL
 );
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -17,18 +17,18 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE authors (
+CREATE TABLE IF NOT EXISTS authors (
     author_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
 
-CREATE TABLE genres (
+CREATE TABLE IF NOT EXISTS genres (
     genre_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE
 );
 
-CREATE TABLE issues (
+CREATE TABLE IF NOT EXISTS issues (
     issue_id SERIAL PRIMARY KEY,
     book_id INTEGER REFERENCES books(book_id) ON DELETE CASCADE,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
@@ -36,7 +36,7 @@ CREATE TABLE issues (
     return_date DATE
 );
 
-CREATE TABLE reviews (
+CREATE TABLE IF NOT EXISTS reviews (
     review_id SERIAL PRIMARY KEY,
     book_id INTEGER REFERENCES books(book_id) ON DELETE CASCADE,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
@@ -45,3 +45,13 @@ CREATE TABLE reviews (
     review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS trasactions (
+    transaction_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+    book_id INTEGER REFERENCES books(book_id) ON DELETE CASCADE,
+    issue_date DATE DEFAULT CURRENT_DATE,
+    due_date DATE,
+    return_date DATE,
+    transaction_type VARCHAR(50) CHECK (transaction_type IN ('issue', 'return')),
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
