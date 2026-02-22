@@ -4,6 +4,7 @@
 ├── config.py
 │
 ├── core/
+  ├── auth_manager.py
 │ ├── book_manager.py
 │ ├── user_manager.py
 │ ├── transaction_manager.py
@@ -22,6 +23,7 @@
 │ └── library.db
 │
 ├── utils/
+  ├── password_utils.py
 │ ├── validators.py
 │ ├── date_utils.py
 │ └── menu.py
