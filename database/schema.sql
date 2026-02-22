@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS users (
     username TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
-    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    role TEXT CHECK (account_type IN ('member', 'librarian', 'faculty')) NOT NULL DEFAULT 'member'
 );
 
 CREATE TABLE IF NOT EXISTS issues (
