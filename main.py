@@ -2,6 +2,8 @@ from unittest import case
 
 from database.init_db import init_db
 
+from core.auth_manager import AUTH_MANAGER
+
 FIRST_RUN_ACTIONS = [
     "Login",
     "Register",
@@ -14,7 +16,7 @@ def initialize_database():
 def main():
     initialize_database()
     print("Welcome to the CLI Library Management System!")
-    for i in range(FIRST_RUN_ACTIONS):
+    for i in range(len(FIRST_RUN_ACTIONS)):
         print(f"{i+1}. {FIRST_RUN_ACTIONS[i]}")
     
     while True:
@@ -33,3 +35,5 @@ def main():
     
 def initial_setup():
     main()
+
+initial_setup()

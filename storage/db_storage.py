@@ -18,3 +18,12 @@ class DBStorage:
         authors = cursor.fetchall()
         conn.close()
         return authors
+
+    # get users from database
+    def get_users(self):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users")
+        users = cursor.fetchall()
+        conn.close()
+        return users

@@ -4,7 +4,8 @@
 ├── config.py
 │
 ├── core/
-  ├── auth_manager.py
+│ ├── pwd_manager.py
+│ ├── auth_manager.py
 │ ├── book_manager.py
 │ ├── user_manager.py
 │ ├── transaction_manager.py
