@@ -1,7 +1,6 @@
-from unittest import case
-
+# database imports
 from database.init_db import init_db
-
+# core imports
 from core.auth_manager import AUTH_MANAGER
 
 FIRST_RUN_ACTIONS = [
@@ -22,7 +21,7 @@ def main():
     while True:
         choice = input("Please select an option: ")
         if choice == "1":
-            print("Login functionality is not implemented yet.")
+            AUTH_MANAGER("login")
         elif choice == "2":
             print("Registration functionality is not implemented yet.")
         elif choice == "3":

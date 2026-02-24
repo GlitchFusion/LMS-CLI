@@ -27,3 +27,11 @@ class DBStorage:
         users = cursor.fetchall()
         conn.close()
         return users
+
+    def get_books(self):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM books")
+        books = cursor.fetchall()
+        conn.close()
+        return books

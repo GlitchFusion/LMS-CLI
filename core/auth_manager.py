@@ -1,6 +1,13 @@
 # FILE: auth_manager.py
 # USE: Manages user authentication, including login, registration, and logout processes.
 
+# fetching data from db through storage.filehandler and validating it
+
+from storage.file_handler import get_storage
+
+storage = get_storage()
+booklist = storage.get_books()
+
 # login
 # register
 # logout
@@ -8,11 +15,11 @@
 def AUTH_MANAGER(action):
 
     if action == "login":
-        print("")
+        print(booklist)
     elif action == "register":
-        print("")
+        register()
     elif action == "logout":
-        print("")
+        logout()
     else:
         print("Invalid action. Please choose from 'login', 'register', or 'logout'.")
 
