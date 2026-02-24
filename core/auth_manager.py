@@ -4,9 +4,12 @@
 # fetching data from db through storage.filehandler and validating it
 
 from storage.file_handler import get_storage
+from utils.validators import user_credentials_validation, password_validation
+
+access_to_acount = False
 
 storage = get_storage()
-booklist = storage.get_books()
+booklist = storage.get_all_books()
 
 # login
 # register
@@ -23,10 +26,18 @@ def AUTH_MANAGER(action):
     else:
         print("Invalid action. Please choose from 'login', 'register', or 'logout'.")
 
-# getting user data from db and validating it for login
-def validate_user_credentials(username, password):
-    
-    return False
+# FORM: Gets user details
+def LOGIN_FORM():
+    username = input("Enter your username: ")
+    pwd = input("Enter your password: ")
+    if user_credentials_validation(username, pwd):
+        print("Login successful!")
+        return True
+
+def REGISTER_FORM():
+    username = input("Choose a username: ")
+    pwd = input("Choose a password: ")
+    return username, pwd
 
 def login():
     print("Login functionality is not implemented yet.")
@@ -38,3 +49,9 @@ def register():
 
 def logout():
     print("Logout functionality is not implemented yet.")
+
+# give access to account if credentials are valid
+def access_account():
+    global access_to_acount
+    if LOGIN_FORM():
+        access_to_acount = True
