@@ -29,8 +29,8 @@ def password_validation(pwd):
     return True
 
 # user credentials account validation
-def user_credentials_validation(username, pwd):
+def user_credentials_validation(email, pwd):
     for user in users:
-        if user[1] == username and user[2] == pwd:
+        if user[2] == email and user[3] == pwd:
             return True
     return False

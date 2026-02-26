@@ -28,16 +28,17 @@ def AUTH_MANAGER(action):
 
 # FORM: Gets user details
 def LOGIN_FORM():
-    username = input("Enter your username: ")
+    email = input("Enter your email: ")
     pwd = input("Enter your password: ")
-    if user_credentials_validation(username, pwd):
+    if user_credentials_validation(email, pwd):
         print("Login successful!")
         return True
 
 def REGISTER_FORM():
-    username = input("Choose a username: ")
-    pwd = input("Choose a password: ")
-    return username, pwd
+    email = input("Ener your email: ")
+    pwd = input("Enter your password: ")
+    return email, pwd
+
 
 def login():
     print("Login functionality is not implemented yet.")
