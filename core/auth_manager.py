@@ -3,13 +3,18 @@
 
 # fetching data from db through storage.filehandler and validating it
 
+from datetime import datetime
+
 from storage.file_handler import get_storage
 from utils.validators import user_credentials_validation, password_validation
+from core. pwd_manager import encode_password
 
 access_to_acount = False
 
 storage = get_storage()
 booklist = storage.get_all_books()
+
+add_user = storage.add_users
 
 # login
 # register
@@ -31,28 +36,42 @@ def LOGIN_FORM():
     email = input("Enter your email: ")
     pwd = input("Enter your password: ")
     if user_credentials_validation(email, pwd):
-        print("Login successful!")
-        return True
+        login()
 
 def REGISTER_FORM():
+    username = input("Enter your username: ")
     email = input("Ener your email: ")
     pwd = input("Enter your password: ")
-    return email, pwd
+    confirm_pwd = input("Confirm your password: ")
+    if pwd != confirm_pwd:
+        print("Passwords do not match. Please try again.")
+        return
+    if not password_validation(pwd):
+        return
+    register(pwd)
 
 
 def login():
-    print("Login functionality is not implemented yet.")
+    print("Login successful!")
+    return True
 
 
-def register():
-    print("Registration functionality is not implemented yet.")
+def register(username, email, pwd):
+    password = encode_password(pwd)
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    add_user(username, email, password, current_time)
+    print("Registration successful!")
+    return True
 
 
 def logout():
-    print("Logout functionality is not implemented yet.")
+    global access_to_acount
+    access_to_acount = False
 
 # give access to account if credentials are valid
-def access_account():
+def access_account(): 
     global access_to_acount
-    if LOGIN_FORM():
+    if login():
+        access_to_acount = True
+    if register():
         access_to_acount = True
