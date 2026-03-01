@@ -24,8 +24,7 @@
 │ └── library.db
 │
 ├── utils/
-  ├── password_utils.py
-│ ├── validators.py
+│ ├── password_utils.py
 │ ├── date_utils.py
 │ └── menu.py
 │

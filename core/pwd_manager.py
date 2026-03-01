@@ -1,27 +1,25 @@
-shift = 3
+# check password for right structure
 
-# password hasing - encoding
-def encode_password(pwd):
-    encoded_pwd = ""
-    for char in pwd:
-        if char.isalpha():
-            shift_amount = shift % 26
-            if char.islower():
-                encoded_char = chr((ord(char) - ord('a') + shift_amount) % 26 + ord('a'))
-            else:
-                encoded_char = chr((ord(char) - ord('A') + shift_amount) % 26 + ord('A'))
-            encoded_pwd += encoded_char
-    return encoded_pwd
-
-# password hashing - decoding
-def decode_password(pwd):
-    decoded_pwd = ""
-    for char in pwd:
-        if char.isalpha():
-            shift_amount = shift % 26
-            if char.islower():
-                decoded_char = chr((ord(char) - ord('a') - shift_amount) % 26 + ord('a'))
-            else:
-                decoded_char = chr((ord(char) - ord('A') - shift_amount) % 26 + ord('A'))
-            decoded_pwd += decoded_char
-    return decoded_pwd
+def password_validation(pwd):
+    # checking for minimum length
+    if len(pwd) < 8:
+        print("Password must be at least 8 characters long.")
+        return False
+    # checking for at least one digit
+    if not any(char.isdigit() for char in pwd):
+        print("Password must contain at least one digit.")
+        return False    
+    # checking for at least one letter
+    if not any(char.isalpha() for char in pwd):
+        print("Password must contain at least one letter.")
+        return False
+    # checking for at least one special character
+    if not any(char in "!@#$%^&*()-_=+[]{}|;:'\",.<>?/" for char in pwd):
+        print("Password must contain at least one special character.")
+        return False
+    # checking for unneccesary characters
+    if any(char in pwd for char in [' ', '\t', '\n']):
+        print("Password cannot contain spaces or whitespace characters.")
+        return False
+    
+    return True

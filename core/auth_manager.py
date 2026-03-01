@@ -6,8 +6,10 @@
 from datetime import datetime
 
 from storage.file_handler import get_storage
-from utils.validators import user_credentials_validation, password_validation
-from core. pwd_manager import encode_password
+from core.user_manager import user_credentials_validation
+from core.pwd_manager import password_validation
+from utils.password_utils import encode_password
+
 
 access_to_acount = False
 
@@ -28,8 +30,6 @@ def AUTH_MANAGER(action):
         register()
     elif action == "logout":
         logout()
-    else:
-        print("Invalid action. Please choose from 'login', 'register', or 'logout'.")
 
 # FORM: Gets user details
 def LOGIN_FORM():
@@ -48,7 +48,8 @@ def REGISTER_FORM():
         return
     if not password_validation(pwd):
         return
-    register(pwd)
+    if password_validation(pwd):
+        register(username, email, pwd)
 
 
 def login():

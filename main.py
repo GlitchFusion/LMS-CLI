@@ -32,7 +32,4 @@ def main():
             exit(1)
 
     
-def initial_setup():
-    main()
-
-initial_setup()
+main()
