@@ -1,7 +1,6 @@
 # managing user data and adding users to db
-
 from storage.file_handler import get_storage
-from core.pwd_manager import decode_password
+from utils.password_utils import decode_password
 
 storage = get_storage()
 users = storage.get_all_users()

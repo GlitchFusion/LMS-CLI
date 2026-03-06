@@ -4,9 +4,8 @@ def init_db():
     conn = get_connection()
     cursor = conn.cursor()
 
-    with open('database/schema.sql', 'r') as f:
-        schema = f.read()
-        cursor.executescript(schema)
-    
+    with open("database/schema.sql", "r") as f:
+        cursor.executescript(f.read())
+
     conn.commit()
     conn.close()

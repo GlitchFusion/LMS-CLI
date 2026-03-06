@@ -50,3 +50,12 @@ class DBStorage:
         conn.close()
     
     # adding users to database
+    def add_users(self, username, email, password, created_at):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO users (username, email, password, created_at) VALUES (?, ?, ?, ?)",
+            (username, email, password, created_at)
+        )
+        conn.commit()
+        conn.close()

@@ -9,11 +9,7 @@ FIRST_RUN_ACTIONS = [
     "Exit"
 ]
 
-def initialize_database():
-    init_db()
-
 def main():
-    initialize_database()
     print("Welcome to the CLI Library Management System!")
     for i in range(len(FIRST_RUN_ACTIONS)):
         print(f"{i+1}. {FIRST_RUN_ACTIONS[i]}")
@@ -31,5 +27,5 @@ def main():
             print("Invalid option. Please try again.")
             exit(1)
 
-    
+init_db()
 main()
